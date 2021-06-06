@@ -414,6 +414,24 @@
     }
   })
 
+  it("reset should revert all the entered form fields to its default values", async () => {
+    wrapper.setData({
+      selectedDate: "2021-06-06",
+      sourceAmount: 2300,
+      sourceCurrency: "ALL",
+      targetCurrencies: ["EUR", "USD"]
+    })
+
+    resetButton().trigger("click")
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.selectedDate).toBe(new Date().toISOString().substr(0, 10))
+    expect(wrapper.vm.sourceCurrency).toBeUndefined()
+    expect(wrapper.vm.targetCurrencies.length).toEqual(0)
+    expect(wrapper.vm.currencyWiseTargetAmount.length).toEqual(0)
+    expect(wrapper.vm.sourceAmount).toEqual(0)
+  })
+
   it("matches the default snapshot", async () => {
      expect(wrapper.html()).toMatchSnapshot()
    })
