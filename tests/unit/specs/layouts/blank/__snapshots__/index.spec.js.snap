@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`blank layout matches the default snapshot 1`] = `
+<div data-app="true" class="v-application v-application--is-ltr theme--light" id="app">
+  <div class="v-application--wrap">
+    <main class="v-main align-center" style="padding: 0px 0px 0px 0px;">
+      <div class="v-main__wrap">
+        <currency-snackbar-notification-stub pnotification="[object Object]"></currency-snackbar-notification-stub>
+      </div>
+    </main>
+  </div>
+</div>
+`;
