@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default layout matches the default snapshot 1`] = `
+<div data-app="true" class="v-application v-application--is-ltr theme--light" id="app">
+  <div class="v-application--wrap">
+    <header class="v-sheet theme--light v-toolbar v-toolbar--flat v-app-bar v-app-bar--fixed primary lighten-3" style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;">
+      <div class="v-toolbar__content" style="height: 64px;">
+        <div class="v-toolbar__title v-app-bar-title">
+          <div class="v-app-bar-title__content">
+            <div class="v-image v-responsive justify-left theme--light" style="height: 42px; width: 50px;">
+              <transition-stub name="fade-transition" mode="in-out">
+                <div class="v-image__image v-image__image--preload v-image__image--contain" style="background-position: center center;"></div>
+              </transition-stub>
+              <div class="v-responsive__content"></div>
+            </div>
+          </div>
+          <div class="v-app-bar-title__placeholder" style="visibility: hidden;">
+            <div class="v-image v-responsive justify-left theme--light" style="height: 42px; width: 50px;">
+              <transition-stub name="fade-transition" mode="in-out">
+                <div class="v-image__image v-image__image--preload v-image__image--contain" style="background-position: center center;"></div>
+              </transition-stub>
+              <div class="v-responsive__content"></div>
+            </div>
+          </div>
+        </div><span class="subtitle-1">Currency converter</span>
+      </div>
+    </header>
+    <main class="v-main" style="padding: 64px 0px 0px 0px;">
+      <div class="v-main__wrap">
+        <currency-snackbar-notification-stub pnotification="[object Object]"></currency-snackbar-notification-stub>
+      </div>
+    </main>
+  </div>
+</div>
+`;
