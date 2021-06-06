@@ -1,0 +1,100 @@
+//--
+  - It contains template for currency conversion home page.
+  -/
+v-container(fluid)
+  v-row.ml-6
+    v-col.col-md-2
+      v-autocomplete(
+        ref       = "autocomplete_source_currency"
+        :items    = "$CONSTANTS.CURRENCIES"
+        :label    = "$CONSTANTS.LABELS.SOURCE_CURRENCY"
+        v-model   = "sourceCurrency"
+      )
+    v-col.offset-md-1.col-md-2
+      v-autocomplete(
+        ref       = "autocomplete_target_currencies"
+        :items    = "$CONSTANTS.CURRENCIES"
+        :label    = "$CONSTANTS.LABELS.TARGET_CURRENCIES"
+        v-model   = "targetCurrencies"
+        multiple
+      )
+        template(v-slot:prepend-item = "")
+          v-list-item(
+            ref    = "list_item_target_currencies"
+            @click = "targetCurrencies = []"
+          )
+            v-list-item-content
+              v-list-item-title
+                | {{ $CONSTANTS.LABELS.CLEAR_SELECTED_VALUES }}
+              v-divider.mt-2
+        template(v-slot:selection = "{ item, index }")
+          v-chip(
+            ref          = "chip_selected_target_currencies"
+            v-if         = "index >= 0 && index < numberOfItemsInSelectionText"
+            @click:close = "targetCurrencies.splice(index, 1)"
+            close
+          )
+            span {{ item }}
+          span(
+            ref       = "span_target_currency_others"
+            v-else-if = "index === numberOfItemsInSelectionText"
+            class     = "grey--text caption"
+          ) 
+            | (+{{ targetCurrencies.length - numberOfItemsInSelectionText }} others)
+    v-col.offset-md-1.col-md-2
+       v-menu(
+        ref                     = "menu_date"
+        v-model                 = "showDateMenu"
+        :close-on-content-click = "false"
+        transition              = "scale-transition"
+        min-width               = "min-content"
+        offset-y
+      )
+        template(v-slot:activator = "{ on }")
+          v-text-field(
+            ref          = "text_field_date"
+            :value       = "selectedDate"
+            :label       = "$CONSTANTS.LABELS.DATE"
+            @click:clear = "selectedDate = undefined"
+            prepend-icon = "mdi-calendar"
+            v-on         = "on"
+            readonly
+          )
+        v-date-picker(
+          ref     = "date_picker"
+          v-model = "selectedDate"
+          :max    = "today" 
+          @input  = "showDateMenu = false"
+        )
+    v-col.offset-md-1.col-md-2
+      v-text-field(
+        ref     = "text_field_source_amount"
+        v-model = "sourceAmount"
+        type    = "number"
+        :label  = "$CONSTANTS.LABELS.SOURCE_AMOUNT"
+      )
+  v-row.align-center.justify-center.mt-4
+    v-btn.mr-12(
+      ref       = "button_convert" 
+      color     = "primary lighten-2"
+      @click    = "convertCurrency()"
+      :loading  = "isLoadingConversionRates"
+      :disabled = "!isConversionPossible"
+      large
+    ) {{ $CONSTANTS.LABELS.CONVERT }}
+    v-btn.ml-12(
+      ref    = "button_reset" 
+      color  = "primary lighten-2"
+      @click = "resetConversionCriteria()"
+      large
+    ) {{ $CONSTANTS.LABELS.RESET }}
+  v-data-table.elevation-1.mt-12(
+    v-if             = "currencyWiseTargetAmount.length"
+    ref              = "table_currency_wise_target_amount"  
+    item-key         = "value"
+    :items           = "currencyWiseTargetAmount"
+    :headers         = "headersForTable"
+    :no-data-text    = "$TABLES.CURRENCY.noDataText"
+    :footer-props    = "footersForTable"
+    :items-per-page  = "$TABLES.CURRENCY.itemsPerPage"
+  )
