@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snackbar notification component matches the default snapshot 1`] = `
+<div class="v-snack subtitle-2 v-snack--active v-snack--right v-snack--top" style="padding-bottom: 0px; padding-top: 0px;">
+  <transition-stub name="v-snack-transition">
+    <div class="v-snack__wrapper v-sheet v-sheet--outlined theme--light error--text">
+      <div role="status" aria-live="polite" class="v-snack__content"><i aria-hidden="true" class="v-icon notranslate mr-2 mdi mdi-alert-circle theme--light error--text"></i>error notification</div>
+      <div class="v-snack__action "><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--default error--text"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-close-circle theme--light"></i></span></button></div>
+    </div>
+  </transition-stub>
+</div>
+`;
