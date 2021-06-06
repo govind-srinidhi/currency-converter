@@ -1,0 +1,24 @@
+//--
+  - It contains template for snackbar notification component
+  -/
+v-snackbar.subtitle-2(
+  ref       = "snackbar_notification"
+  value     = "true"
+  :color    = "pNotification.type" 
+  :timeout  = "-1"
+  right top outlined
+)
+  v-icon.mr-2(
+    ref    = "icon_notification"
+    v-if   = "pNotification.icon"
+    :color = "pNotification.type"
+  ) {{ pNotification.icon }}
+  | {{ pNotification.text }}
+  template(v-slot:action = "")
+    v-btn(
+      :color = "pNotification.type"
+      ref    = "button_close"
+      @click = "$emit('close')"
+      icon
+    )
+      v-icon mdi-close-circle
