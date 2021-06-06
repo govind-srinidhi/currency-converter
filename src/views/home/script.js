@@ -72,6 +72,7 @@ export default {
       this.targetCurrencies = []
       this.currencyWiseTargetAmount = []
       this.selectedDate = this.today
+      this.sourceAmount = 0
     },
   },
   watch: {
