@@ -19,7 +19,7 @@ const router = new Router({
       },
       component: () => import(/* webpackChunkName: "not-found" */ "@/views/not-found")
     }, {
-      path: "/",
+      path: "/index.html",
       name: "home",
       meta: {
         layout: "Default"
