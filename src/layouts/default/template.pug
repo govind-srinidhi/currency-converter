@@ -1,0 +1,27 @@
+//--
+  - It contains template for default layout.
+  -/
+
+v-app
+  v-app-bar(
+    ref   = "app_bar_default"
+    color = "primary lighten-3"
+    flat app 
+  )
+    v-app-bar-title
+      v-img.justify-left(
+        ref    = "image_logo"
+        src    = "@/assets/images/logo.png"
+        height = "42"
+        width  = "50"
+        contain
+      )
+    span.subtitle-1 {{ $CONSTANTS.LABELS.APP_NAME }}
+  v-main
+    slot
+    currency-snackbar-notification(
+      ref             = "currency_notification_snackbar"
+      v-if            = "notification"
+      :p-notification = "notification"
+      @close          = "suppressNotification"
+    )

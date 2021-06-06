@@ -1,32 +1,26 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+component(:is="layout")
+  router-view
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import BlankLayout from "./layouts/blank";
+import DefaultLayout from "./layouts/default";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "CurrencyConverter",
+  components: {
+    BlankLayout,
+    DefaultLayout,
+  },
+  computed: {
+    layout() {
+      let layout = this.$route.meta.layout;
+      if (layout) {
+        return `${layout}Layout`;
+      }
+      return "BlankLayout";
+    },
+  },
+};
+</script>

@@ -1,0 +1,12 @@
+//--
+  - It contains template for blank layout.
+  -/ 
+v-app
+  v-main.align-center
+    slot
+    currency-snackbar-notification(
+      ref             = "currency_notification_snackbar"
+      v-if            = "notification"
+      :p-notification = "notification"
+      @close          = "suppressNotification"
+    )
